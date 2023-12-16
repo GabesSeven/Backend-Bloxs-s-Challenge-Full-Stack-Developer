@@ -2,4 +2,4 @@
 links.txt
 
 # environment variables
-.venv
+**/.venv
