@@ -23,10 +23,10 @@ class Transacao(db.Model):
 class Pessoa(db.Model):
     id_pessoa = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
-    sobrenome = db.Column(db.String(255))  # Adicionando o campo 'sobrenome'
-    email = db.Column(db.String(255), unique=True)  # Adicionando o campo 'email'
-    is_deleted = db.Column(db.Boolean, default=False)  # Adicionando o campo 'is_deleted'
-    date_joined = db.Column(db.DateTime, default=datetime.utcnow)  # Adicionando o campo 'date_joined'
+    sobrenome = db.Column(db.String(255))  # campo adicional 
     cpf = db.Column(db.String(14))
     data_nascimento = db.Column(db.Date)
+    email = db.Column(db.String(255), unique=True)  # campo adicional para autenticação
+    date_joined = db.Column(db.DateTime, default=datetime.utcnow)  # campo adicional para, caso necessário, controle de usuários
+    is_deleted = db.Column(db.Boolean, default=False)  # campo adicional para, caso necessário, exclusão lógica ou soft delete
     contas = db.relationship('Conta', backref='pessoa', lazy=True)

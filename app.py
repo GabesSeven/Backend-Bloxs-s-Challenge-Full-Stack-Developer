@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from app.models import Conta, Transacao  # Importando os modelos do app
+from werkzeug.security import generate_password_hash, check_password_hash
+from app.models import Pessoa, Conta, Transacao  # Importando os modelos do app
 from datetime import datetime
 
 # Inicialização do app e configuração de rota do Banco de Dados
@@ -24,11 +25,47 @@ def criar_conta():
     db.session.commit()
     return jsonify({'message': 'Conta criada com sucesso'}), 201
 
-# Endpoint para realizar login (poderia ser mais seguro com autenticação)
+# Endpoint para registrar uma nova pessoa com senha criptografada
+@app.route('/registrar_pessoa', methods=['POST'])
+def registrar_pessoa():
+    data = request.json
+    nome = data.get('nome')
+    cpf = data.get('cpf')
+    data_nascimento = data.get('data_nascimento')
+    senha = data.get('senha')
+
+    # Gera o hash da senha fornecida
+    senha_hash = generate_password_hash(senha)
+
+    nova_pessoa = Pessoa(
+        nome=nome,
+        cpf=cpf,
+        data_nascimento=data_nascimento,
+        senha_hash=senha_hash
+    )
+    
+    db.session.add(nova_pessoa)
+    db.session.commit()
+    
+    return jsonify({'message': 'Pessoa registrada com sucesso'}), 201
+
+# Endpoint para realizar login
 @app.route('/login', methods=['POST'])
 def login():
-    # Lógica de login aqui
-    return jsonify({'message': 'Login bem-sucedido'}), 200
+    data = request.json
+    id_pessoa = data.get('id_pessoa')
+    senha = data.get('senha')
+
+    # Busca a pessoa pelo ID
+    pessoa = Pessoa.query.filter_by(id_pessoa=id_pessoa).first()
+
+    if pessoa and check_password_hash(pessoa.senha_hash, senha):
+        # Se a pessoa existe e a senha está correta, retorna 'Login bem-sucedido'
+        return jsonify({'message': 'Login bem-sucedido'}), 200
+    else:
+        # Caso contrário, retorna 'Credenciais inválidas'
+        return jsonify({'message': 'Credenciais inválidas'}), 401
+
 
 # Endpoint para operação de depósito em uma conta
 @app.route('/deposito/<id_conta>', methods=['PUT'])
@@ -58,7 +95,8 @@ def consulta_saldo(id_conta):
 # Endpoint para operação de saque em uma conta
 @app.route('/saque/<id_conta>', methods=['PUT'])
 def saque(id_conta):
-    data = request.json
+    data = re@app.route('/login', methods=['POST'])
+quest.json
     conta = Conta.query.get(id_conta)
     if not conta:
         return jsonify({'message': 'Conta não encontrada'}), 404
