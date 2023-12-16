@@ -6,7 +6,7 @@ db = SQLAlchemy()
 
 class Conta(db.Model):
     id_conta = db.Column(db.String(36), primary_key=True, default=str(uuid.uuid4()))
-    id_pessoa = db.Column(db.Integer)
+    id_pessoa = db.Column(db.Integer, db.ForeignKey('pessoa.id_pessoa'))  # Adicionando chave estrangeira para Pessoa
     saldo = db.Column(db.Numeric(10, 2))
     limite_saque_diario = db.Column(db.Numeric(10, 2))
     flag_ativo = db.Column(db.Boolean)
@@ -23,6 +23,10 @@ class Transacao(db.Model):
 class Pessoa(db.Model):
     id_pessoa = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
+    sobrenome = db.Column(db.String(255))  # Adicionando o campo 'sobrenome'
+    email = db.Column(db.String(255), unique=True)  # Adicionando o campo 'email'
+    is_deleted = db.Column(db.Boolean, default=False)  # Adicionando o campo 'is_deleted'
+    date_joined = db.Column(db.DateTime, default=datetime.utcnow)  # Adicionando o campo 'date_joined'
     cpf = db.Column(db.String(14))
     data_nascimento = db.Column(db.Date)
     contas = db.relationship('Conta', backref='pessoa', lazy=True)
