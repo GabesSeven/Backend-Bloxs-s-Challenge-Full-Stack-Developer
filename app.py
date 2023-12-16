@@ -4,8 +4,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import Pessoa, Conta, Transacao  # Importando os modelos do app
 from datetime import datetime
 
+rom flask import Flask, jsonify
+from flask_cors import CORS
+from app.models import Conta, Transacao  # Importando os modelos do app
+from datetime import datetime
+
+
 # Inicialização do app e configuração de rota do Banco de Dados
 app = Flask(__name__)
+CORS(app) # Habilita o CORS para todas as rotas
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://seu_usuario_mysql:senha@localhost/nome_do_banco'
 db = SQLAlchemy(app)
 
@@ -95,8 +102,7 @@ def consulta_saldo(id_conta):
 # Endpoint para operação de saque em uma conta
 @app.route('/saque/<id_conta>', methods=['PUT'])
 def saque(id_conta):
-    data = re@app.route('/login', methods=['POST'])
-quest.json
+    data = request.json
     conta = Conta.query.get(id_conta)
     if not conta:
         return jsonify({'message': 'Conta não encontrada'}), 404
@@ -132,6 +138,6 @@ def extrato(id_conta):
     extrato = [{'id_transacao': t.id_transacao, 'valor': float(t.valor), 'data_transacao': str(t.data_transacao)} for t in transacoes]
     return jsonify({'extrato': extrato}), 200
 
-# responsável por inicar a aplicação 
+# Inicia a aplicação 
 if __name__ == '__main__':
     app.run(debug=True)
