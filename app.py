@@ -1,11 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import Pessoa, Conta, Transacao  # Importando os modelos do app
 from datetime import datetime
 
-rom flask import Flask, jsonify
-from flask_cors import CORS
 from app.models import Conta, Transacao  # Importando os modelos do app
 from datetime import datetime
 
