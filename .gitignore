@@ -1,5 +1,21 @@
-# study links to assemble the application
+# links de estudo da aplicação
 links.txt
 
-# environment variables
+# variáveis de ambiente
 **/.venv
+
+# Arquivos e pastas específicos para Python
+__pycache__/
+*/__pycache__/
+*.pyc
+venv/
+*.pyo
+.env
+
+# Arquivos de logs e caches
+*.log
+logs/
+*.cache
+
+# Arquivos de configuração
+*.ini

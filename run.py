@@ -4,15 +4,25 @@ from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import Pessoa, Conta, Transacao  # Importando os modelos do app
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
 from app.models import Conta, Transacao  # Importando os modelos do app
 from datetime import datetime
 
-
-# Inicialização do app e configuração de rota do Banco de Dados
+# Inicializa do app e configuração de rota do Banco de Dados
 app = Flask(__name__)
-CORS(app) # Habilita o CORS para todas as rotas
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://seu_usuario_mysql:senha@localhost/nome_do_banco'
+
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+
+# Habilita CORS para todas as rotas
+CORS(app) 
+
+# Configuração da conexão com o banco de dados
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
+
 db = SQLAlchemy(app)
 
 # Endpoint para criação de conta
@@ -137,6 +147,6 @@ def extrato(id_conta):
     extrato = [{'id_transacao': t.id_transacao, 'valor': float(t.valor), 'data_transacao': str(t.data_transacao)} for t in transacoes]
     return jsonify({'extrato': extrato}), 200
 
-# Inicia a aplicação 
+# Função main 
 if __name__ == '__main__':
     app.run(debug=True)
