@@ -11,7 +11,7 @@ from schemas import ContaSchema, TransacaoSchema
 # Instância de Blueprint
 blp = Blueprint("Conta", "conta", description="Operações em contas")
 
-@blp.route("/conta-criacao")
+@blp.route("/conta")
 class ContaCriacaoView(MethodView):
     """
     CRIAR CONTA

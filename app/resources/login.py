@@ -14,24 +14,7 @@ from models import PessoaModel
 from schemas import PessoaSchema
 from blocklist import BLOCKLIST
 
-
 blp = Blueprint("Login", "login", description="Autenticação e controle de usuário")
-
-@blp.route("/registro")
-class RegistroUsuarioView(MethodView):
-    @blp.arguments(PessoaSchema)
-    def post(self, dados_usuario):
-        if PessoaSchema.query.filter(PessoaSchema.email == dados_usuario["email"]).first():
-            abort(409, message="Já existe um usuário com esse e-mail.")
-
-        usuario = PessoaSchema(
-            email=dados_usuario["email"],
-            senha=pbkdf2_sha256.hash(dados_usuario["senha"]),
-        )
-        db.session.add(usuario)
-        db.session.commit()
-
-        return {"mensagem": "Usuário criado com sucesso."}, 201
 
 @blp.route("/login")
 class LoginView(MethodView):
@@ -55,6 +38,22 @@ class LogoutView(MethodView):
         jti = get_jwt()["jti"]
         BLOCKLIST.add(jti)
         return {"mensagem": "Sessão encerrada com sucesso."}, 200
+
+@blp.route("/usuario")
+class RegistroUsuarioView(MethodView):
+    @blp.arguments(PessoaSchema)
+    def post(self, dados_usuario):
+        if PessoaModel.query.filter(PessoaModel.email == dados_usuario["email"]).first():
+            abort(409, message="Já existe um usuário com esse e-mail.")
+
+        usuario = PessoaModel(
+            email=dados_usuario["email"],
+            senha=pbkdf2_sha256.hash(dados_usuario["senha"]),
+        )
+        db.session.add(usuario)
+        db.session.commit()
+
+        return {"mensagem": "Usuário criado com sucesso."}, 201
 
 @blp.route("/usuario/<int:id_usuario>")
 class UsuarioView(MethodView):
