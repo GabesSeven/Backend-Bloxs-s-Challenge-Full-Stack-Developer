@@ -1,8 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
+from db import db
 from datetime import datetime
 import uuid
-
-db = SQLAlchemy()
 
 class Conta(db.Model):
     id_conta = db.Column(db.String(36), primary_key=True, default=str(uuid.uuid4()))
