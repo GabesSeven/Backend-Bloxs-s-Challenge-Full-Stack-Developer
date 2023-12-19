@@ -38,7 +38,7 @@ class ContaView(MethodView):
     """
     DELETAR / BLOQUEAR CONTA
     """
-    @blp.response(200)
+    @blp.response(204)
     def delete(self, id_conta):
         conta = ContaModel.query.get(id_conta)
         if not conta:
@@ -55,7 +55,8 @@ class ContaView(MethodView):
     """
     SALDO DE CONTA
     """
-    @blp.response(200)
+    # @blp.response(200, ContaSchema(many=True))
+    @blp.response(200, ContaSchema)
     def get(self, id_conta):
         conta = ContaModel.query.get(id_conta)
         if not conta:
@@ -69,7 +70,7 @@ class ContaOperacaoView(MethodView):
     DEPÓSITO
     """
     @blp.arguments(TransacaoSchema)
-    @blp.response(200)
+    @blp.response(200, TransacaoSchema)
     def put(self, id_conta):
         data = request.json
         conta = ContaModel.query.get(id_conta)
@@ -93,7 +94,7 @@ class ContaOperacaoView(MethodView):
     """
     SAQUE
     """
-    @blp.response(200)
+    @blp.response(200, TransacaoSchema)
     def delete(self, id_conta):
         data = request.json
         conta = ContaModel.query.get(id_conta)
@@ -120,7 +121,7 @@ class ContaOperacaoView(MethodView):
     """
     EXTRATO
     """
-    @blp.response(200)
+    @blp.response(200, TransacaoSchema(many=True))
     def get(self, id_conta):
         conta = ContaModel.query.get(id_conta)
         if not conta:

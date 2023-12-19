@@ -16,13 +16,13 @@ class LoginView(MethodView):
     AUTENTICAÇÃO
     """
     @blp.arguments(PessoaSchema)  
-    @blp.response(200)  
+    @blp.response(200, PessoaSchema)  
     def post(self, tag_data):
         try:
             email = tag_data.get('email')  # Assumindo que o email é fornecido nos dados enviados
 
             # Busca a pessoa pelo email
-            pessoa = Pessoa.query.filter_by(email=email).first()
+            pessoa = PessoaModel.query.filter_by(email=email).first()
 
             if pessoa and check_password_hash(pessoa.senha_hash, tag_data.get('senha')):
                 # Serializa os dados da Pessoa para retorno
@@ -33,3 +33,4 @@ class LoginView(MethodView):
         except SQLAlchemyError as e:
             db.session.rollback()
             abort(500, message=str(e))
+
