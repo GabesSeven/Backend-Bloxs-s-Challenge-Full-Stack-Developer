@@ -2,7 +2,7 @@ from db import db
 from datetime import datetime
 import uuid
 
-class Conta(db.Model):
+class ContaModel(db.Model):
     id_conta = db.Column(db.String(36), primary_key=True, default=str(uuid.uuid4()))
     id_pessoa = db.Column(db.Integer, db.ForeignKey('pessoa.id_pessoa'))  # Adicionando chave estrangeira para Pessoa
     saldo = db.Column(db.Numeric(10, 2))
@@ -12,13 +12,13 @@ class Conta(db.Model):
     data_criacao = db.Column(db.Date)
     transacoes = db.relationship('Transacao', backref='conta', lazy=True)
 
-class Transacao(db.Model):
+class TransacaoModel(db.Model):
     id_transacao = db.Column(db.Integer, primary_key=True)
     id_conta = db.Column(db.String(36), db.ForeignKey('conta.id_conta'), nullable=False)
     valor = db.Column(db.Numeric(10, 2))
     data_transacao = db.Column(db.Date)
 
-class Pessoa(db.Model):
+class PessoaModel(db.Model):
     id_pessoa = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
     sobrenome = db.Column(db.String(255))  # campo adicional 
