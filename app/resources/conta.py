@@ -5,27 +5,27 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from datetime import datetime
 from db import db
-from ..models import ContaModel, TransacaoModel
+from models import ContaModel, TransacaoModel
 from schemas import ContaSchema, TransacaoSchema
 
 # Instância de Blueprint
-blp = Blueprint('conta', __name__, url_prefix='/conta')
+blp = Blueprint("Conta", "conta", description="Operações em contas")
 
-@blp.route("/conta")
-class ContaView(MethodView):
+@blp.route("/conta-criacao")
+class ContaCriacaoView(MethodView):
     """
     CRIAR CONTA
     """
     @blp.arguments(ContaSchema)
     @blp.response(201, ContaSchema)
-    def post(self, tag_data):
+    def post(self):
         try:
             nova_conta = ContaModel(
-                id_pessoa=tag_data['id_pessoa'],
-                saldo=tag_data['saldo'],
-                limite_saque_diario=tag_data['limite_saque_diario'],
-                flag_ativo=tag_data['flag_ativo'],
-                tipo_conta=tag_data['tipo_conta'],
+                id_pessoa=request.json['id_pessoa'],
+                saldo=request.json['saldo'],
+                limite_saque_diario=request.json['limite_saque_diario'],
+                flag_ativo=request.json['flag_ativo'],
+                tipo_conta=request.json['tipo_conta'],
                 data_criacao=datetime.now().date()
             )
             db.session.add(nova_conta)
@@ -35,6 +35,8 @@ class ContaView(MethodView):
             db.session.rollback()
             abort(500, message=str(e))
 
+@blp.route("/conta/<id_conta>")
+class ContaCriacaoView(MethodView):
     """
     DELETAR / BLOQUEAR CONTA
     """
@@ -65,7 +67,7 @@ class ContaView(MethodView):
         return {'saldo': float(conta.saldo)}, 200
 
 @blp.route("/operacao")
-class ContaOperacaoView(MethodView):
+class ContaOperacaoDepositoView(MethodView):
     """
     DEPÓSITO
     """
@@ -91,6 +93,8 @@ class ContaOperacaoView(MethodView):
             db.session.rollback()
             abort(500, message=str(e))
 
+@blp.route("/operacao/<id_conta>")
+class ContaOperacaoSaqueETransacaoView(MethodView):
     """
     SAQUE
     """
