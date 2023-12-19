@@ -1,21 +1,49 @@
-# links de estudo da aplicação
-links.txt
-
-# variáveis de ambiente
-**/.venv
-
-# Arquivos e pastas específicos para Python
-__pycache__/
-*/__pycache__/
+# Arquivos gerados pela execução do código
 *.pyc
-venv/
-*.pyo
+__pycache__/
+
+# Arquivos de ambiente ou configuração local
 .env
 
-# Arquivos de logs e caches
-*.log
-logs/
-*.cache
+# Diretório de instalação de dependências
+/venv/
+/.venv/
 
-# Arquivos de configuração
-*.ini
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+
+# Arquivos gerados pelos sistemas operacionais
+.DS_Store
+Thumbs.db
+
+# Cache de bytecodes Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Diretório de uploads
+uploads/
+
+# Diretório de dados locais
+instance/
+
+# Arquivos de build
+/build/
+
+# Arquivos de IDE
+.vscode/
+.idea/
+
+# Arquivos de banco de dados locais
+*.sqlite
+*.db
+
+# Arquivos de saída de testes e cobertura
+.coverage
+htmlcov/
+
+# Arquivos de migração de banco de dados
+migrations/
