@@ -45,10 +45,11 @@
 
 ### Banco de Dados
 <ol>
-<li>Como só desenvolvi local, deixei o banco padrão Python, SQLite3, como visto na imagem abaixo;</li>
-</li>Plataforma Render possui <strong>PosgreSQL (gratuito para teste)</strong> e <strong>MySQL (pago)</strong>;</li>
-<li>Configurei o upload do banco MySQL no Render, mas não passei o cartão de crédito;</li>
-</li>Porém domínio em Banco de Dados relacionais, atualmente crio e gerencio o da Statup ao qual trabalho, também sei trabalhar com Normalização, já trabalhei com Oracle, PostgreSQL e MySQL.</li>
+  <li>Como só desenvolvi local, deixei o banco padrão Python, SQLite3, como visto na imagem abaixo;</li>
+  </li>Plataforma Render possui <strong>PosgreSQL (gratuito para teste)</strong> e <strong>MySQL (pago)</strong>;</li>
+  <li>Configurei o upload do banco MySQL no Render, mas não passei o cartão de crédito;</li>
+  </li>Porém domínio em Banco de Dados relacionais, atualmente crio e gerencio o da Statup ao qual trabalho, também sei trabalhar com Normalização, já trabalhei com Oracle, PostgreSQL e MySQL.</li>
+</ol>
 
 <br>
 
