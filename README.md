@@ -23,12 +23,16 @@
  <li>Para facilitar a exeução estou subindo os arquivos das variáveis de ambiente (⚠️⚠️⚠️ISSO É ERRADÍSSIMO⚠️⚠️⚠️) e as bibliotecas;</li>
 </ol>
 
+<br>
+
 ### Acesso Remoto
 <br>
 <ol>
  <li>Subir a aplicação em ambiente cloud, atualmente trabalho com Render para sublir as plataformas (frontend, backend e banco de dados);</li>
  <li>A arquitetura ideal seria em um ambiente <strong>AWS</strong> como na imagem abaixo.</li>
 </ol>
+
+<br>
 
 <figure>
 <p align="center">
@@ -37,12 +41,16 @@
 </p>
 </figure>
 
+<br>
+
 ### Banco de Dados
 <ol>
 <li>Como só desenvolvi local, deixei o banco padrão Python, SQLite3, como visto na imagem abaixo;</li>
 </li>Plataforma Render possui <strong>PosgreSQL (gratuito para teste)</strong> e <strong>MySQL (pago)</strong>;</li>
 <li>Configurei o upload do banco MySQL no Render, mas não passei o cartão de crédito;</li>
 </li>Porém domínio em Banco de Dados relacionais, atualmente crio e gerencio o da Statup ao qual trabalho, também sei trabalhar com Normalização, já trabalhei com Oracle, PostgreSQL e MySQL.</li>
+
+<br>
 
 <figure>
 <p align="center">
@@ -51,12 +59,18 @@
 </p>
 </figure>
 
+<br>
+
 ### Endpoints
 <br>
 <ol>
   <li>Extrato</li>
   <li>Saque - ocorre verificação de limite por valores de transações diárias</li>
 </ol>
+
+<br>
+<hr>
+<br>
 
 ## Execução Local 🏃‍♀️
 <br><br>
@@ -106,6 +120,7 @@ json {
   "usuario_ativo": false
 }
 ```
+
 <br>
 
 #### Autenticação: Login
@@ -126,6 +141,7 @@ json {
   "token_refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwMzA4MDI1MCwianRpIjoiYTQ4NWExNDMtNGM4NS00ZGQwLWIyYTItYmI1ZjgxOTQ3ZDJjIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiJhMGE0YmRhMC01ODYzLTRhNjUtODdjNC02NTMyMTdjOTEyYjUiLCJuYmYiOjE3MDMwODAyNTAsImNzcmYiOiI4NTRjNGJjNi00MjYxLTQ5MDEtYTc2Yy1mMTViMTNkNDUzODgiLCJleHAiOjE3MDU2NzIyNTB9.QYlZsPi-PAs8I0O4ntBHJ9kyU9gs-xxx_5LWchKKkis"
 }
 ```
+
 <br>
 
 ### Autenticação: Logout
@@ -136,6 +152,7 @@ json {
 json {
   "mensagem": "Sessão encerrada com sucesso."
 }
+
 <br>
 
 ### Autenticação: Atualização de Token
@@ -209,26 +226,26 @@ json {
   "valor": 0
 }
 ```
+
 <br>
 
 ### ⚠️NÃO FINALIZADO: Operação em Conta: Saque em Conta ⚠️ 
-
-<br>
 
 - **URL:** `/operacao/`
 - **Método:** `POST`
 - **Descrição:** Realiza saque em uma conta.
 
+<br>
 
 ### ⚠️NÃO FINALIZADO: Operação em Conta: Extrato em Conta ⚠️ 
-
-<br>
 
 - **URL:** `/operacao/<id_conta>`
 - **Método:** `GET` (para extrato)
 - **Descrição:** Realiza um depósito.
 
-<br><br><br>
+<br>
+<hr>
+<br>
 
 ## Banco de Dados 🎲
 
@@ -259,11 +276,12 @@ json {
                                  +-------------------+
 ```    
 
+<!--
 <br>
 <hr>
 <br>
 
-<!-- ## Tecnologias Utilizadas 💾
+## Tecnologias Utilizadas 💾
 <br><br>
 
 ![GIT](https://img.shields.io/badge/git-F05032?logo=git&logoColor=white&style=for-the-badge) &nbsp;
