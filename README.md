@@ -1,9 +1,13 @@
-# <em>Backend - Bloxs s Challenge -Full Stack Developer</em>
-
+# <em>Backend - Bloxs s Challenge - Full Stack Developer</em>
 <br><br>
 
 <p style="text-align: justify;">
     Interface de programação de aplicativos (API): operações bancárias básicas a partir de uma simples aplicação web.
+  <ol>
+    <li>BackEnd: <a href='https://github.com/GabesSeven/Backend-Bloxs-s-Challenge-Full-Stack-Developer'>https://github.com/GabesSeven/Backend-Bloxs-s-Challenge-Full-Stack-Developer</a>;</li>
+    <li>FrontEnd: <a href='https://github.com/GabesSeven/Frontend-Bloxs-s-Challenge-Full-Stack-Developer'>https://github.com/GabesSeven/Frontend-Bloxs-s-Challenge-Full-Stack-Developer</a>.</li>
+    <li>Banco de Dados MySQL para o Render: <a href='https://github.com/GabesSeven/Database-Bloxs-s-Challenge-Full-Stack-Developer'>https://github.com/GabesSeven/Database-Bloxs-s-Challenge-Full-Stack-Developer</a>.</li>
+  </ol>
 </p>
 
 <br>
@@ -11,13 +15,16 @@
 <br>
 
 ## ⚠️⚠️⚠️ Observações - O que faltou? ⚠️⚠️⚠️
+<br><br>
 
 ### Segurança
+<br>
 <ol>
- <li>Para facilitar a exeução estou subindo os arquivos das variáveis de ambiente (ISSO É ERRADÍSSIMO) e as bibliotecas;</li>
+ <li>Para facilitar a exeução estou subindo os arquivos das variáveis de ambiente (⚠️⚠️⚠️ISSO É ERRADÍSSIMO⚠️⚠️⚠️) e as bibliotecas;</li>
 </ol>
 
 ### Acesso Remoto
+<br>
 <ol>
  <li>Subir a aplicação em ambiente cloud, atualmente trabalho com Render para sublir as plataformas (frontend, backend e banco de dados);</li>
  <li>A arquitetura ideal seria em um ambiente <strong>AWS</strong> como na imagem abaixo.</li>
@@ -34,17 +41,18 @@
 <ol>
 <li>Como só desenvolvi local, deixei o banco padrão Python, SQLite3, como visto na imagem abaixo;</li>
 </li>Plataforma Render possui <strong>PosgreSQL (gratuito para teste)</strong> e <strong>MySQL (pago)</strong>;</li>
-<li>Configurei o upload do banco MySQL no Render (), mas não passei o cartão de crédito;</li>
+<li>Configurei o upload do banco MySQL no Render, mas não passei o cartão de crédito;</li>
 </li>Porém domínio em Banco de Dados relacionais, atualmente crio e gerencio o da Statup ao qual trabalho, também sei trabalhar com Normalização, já trabalhei com Oracle, PostgreSQL e MySQL.</li>
 
 <figure>
 <p align="center">
   <img src="https://github.com/GabesSeven/Backend-Bloxs-s-Challenge-Full-Stack-Developer/assets/37443722/7dae7e44-3103-4d9b-9740-0d928164467d" height="450" width="650" alt="Console - banco SQLLite3"/><br>
-  Console - banco SQLLite3
+  Console - SQLite3
 </p>
 </figure>
 
 ### Endpoints
+<br>
 <ol>
   <li>Extrato</li>
   <li>Saque - ocorre verificação de limite por valores de transações diárias</li>
@@ -68,10 +76,7 @@
 <br>
 
 ## Rotas 🛣️
-
 <br><br>
-
-<br>
 
 #### Operação em Usuário: Criar Conta
 - **URL:** `/criar-usuario`
@@ -227,12 +232,32 @@ json {
 
 ## Banco de Dados 🎲
 
-<figure>
-<p align="center">
-  <img src="https://i.imgur.com/7phya16.png" height="450" width="650" alt="API para Sistema de Avaliação de Créditos"/><br>
-  Diagrama <em>Unified Modeling Language (UML)</em> Simplificado de uma </em>API Credit Application System</em>
-</p>
-</figure>
+```plaintext
+    +-----------------+          +---------------------+
+    |    PessoaModel  |1        N|   ContaModel        |
+    +-----------------+<-------->|---------------------+
+    | id_pessoa [PK]  |          | id_conta [PK]       |
+    | email           |          | id_pessoa [FK]      |
+    | senha           |          | saldo               |
+    | nome            |          | limite_saque_diario |
+    | sobrenome       |          | flag_ativo          |
+    | cpf             |          | tipo_conta          |
+    | data_nascimento |          | data_criacao        |
+    | data_criacao    |          +---------------------+
+    | usuario_ativo   |                1 |
+    +-----------------+                  |
+                                         |
+                                         |
+                                       N |
+                                 +-------------------+
+                                 |  TransacaoModel   |
+                                 +-------------------+
+                                 | id_transacao [PK] |
+                                 | id_conta [FK]     |
+                                 | valor             |
+                                 | data_transacao    |
+                                 +-------------------+
+```    
 
 <br>
 <hr>

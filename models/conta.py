@@ -14,4 +14,3 @@ class ContaModel(db.Model):
     flag_ativo = db.Column(db.Boolean, default=True)
     tipo_conta = db.Column(db.Integer)
     data_criacao = db.Column(db.Date)
-
