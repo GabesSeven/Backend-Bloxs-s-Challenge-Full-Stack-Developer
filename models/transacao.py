@@ -7,6 +7,6 @@ class TransacaoModel(db.Model):
     
     # id_transacao = db.Column(db.Integer, primary_key=True)
     id_transacao = db.Column(db.String(36), primary_key=True, default=str(uuid.uuid4()))
-    id_conta = db.Column(db.String(36), db.ForeignKey('conta.id_conta'), nullable=False)
+    id_conta = db.Column(db.String, db.ForeignKey('conta.id_conta'), nullable=False)
     valor = db.Column(db.Numeric(10, 2))
     data_transacao = db.Column(db.Date)

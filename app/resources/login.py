@@ -11,22 +11,22 @@ from passlib.hash import pbkdf2_sha256
 
 from db import db
 from models import PessoaModel
-from schemas import PessoaSchema
+from schemas import PessoaSchema, LoginSchema
 from blocklist import BLOCKLIST
 
 blp = Blueprint("Login", "login", description="Autenticação e controle de usuário")
 
 @blp.route("/login")
 class LoginView(MethodView):
-    @blp.arguments(PessoaSchema)
-    def post(self, dados_usuario):
-        usuario = PessoaSchema.query.filter(
-            PessoaSchema.email == dados_usuario["email"]
+    @blp.arguments(LoginSchema)
+    def post(self, dados_login):
+        usuario = PessoaModel.query.filter(
+            PessoaModel.email == dados_login["email"]
         ).first()
-
-        if usuario and pbkdf2_sha256.verify(dados_usuario["senha"], usuario.senha):
-            token_acesso = create_access_token(identity=usuario.id, fresh=True)
-            token_refresh = create_refresh_token(usuario.id)
+        
+        if usuario and pbkdf2_sha256.verify(dados_login["senha"], usuario.senha):
+            token_acesso = create_access_token(identity=usuario.id_pessoa, fresh=True)
+            token_refresh = create_refresh_token(usuario.id_pessoa)
             return {"token_acesso": token_acesso, "token_refresh": token_refresh}, 200
 
         abort(401, message="Credenciais inválidas.")
@@ -38,35 +38,6 @@ class LogoutView(MethodView):
         jti = get_jwt()["jti"]
         BLOCKLIST.add(jti)
         return {"mensagem": "Sessão encerrada com sucesso."}, 200
-
-@blp.route("/usuario")
-class RegistroUsuarioView(MethodView):
-    @blp.arguments(PessoaSchema)
-    def post(self, dados_usuario):
-        if PessoaModel.query.filter(PessoaModel.email == dados_usuario["email"]).first():
-            abort(409, message="Já existe um usuário com esse e-mail.")
-
-        usuario = PessoaModel(
-            email=dados_usuario["email"],
-            senha=pbkdf2_sha256.hash(dados_usuario["senha"]),
-        )
-        db.session.add(usuario)
-        db.session.commit()
-
-        return {"mensagem": "Usuário criado com sucesso."}, 201
-
-@blp.route("/usuario/<int:id_usuario>")
-class UsuarioView(MethodView):
-    @blp.response(200, PessoaSchema)
-    def get(self, id_usuario):
-        usuario = PessoaSchema.query.get_or_404(id_usuario)
-        return usuario
-
-    def delete(self, id_usuario):
-        usuario = PessoaSchema.query.get_or_404(id_usuario)
-        db.session.delete(usuario)
-        db.session.commit()
-        return {"mensagem": "Usuário deletado."}, 200
 
 @blp.route("/refresh")
 class AtualizacaoTokenView(MethodView):

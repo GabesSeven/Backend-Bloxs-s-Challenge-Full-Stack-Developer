@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
 import os
 import secrets
@@ -12,6 +13,7 @@ from blocklist import BLOCKLIST
 
 from .resources.login import blp as LoginBlueprint
 from .resources.conta import blp as ContaBlueprint
+from .resources.pessoa import blp as PessoaBlueprint
 
 def create_app(db_url=None):
     app = Flask(__name__)
@@ -26,11 +28,12 @@ def create_app(db_url=None):
     app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("SQLALCHEMY_DATABASE_URI")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS")
     app.config["PROPAGATE_EXCEPTIONS"] = True
+    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
     db.init_app(app)
     migrate = Migrate(app, db)
     api = Api(app)
 
-    app.config["JWT_SECRET_KEY"] = secrets.SystemRandom().getrandbits(128)
+    app.config["JWT_SECRET_KEY"] = str(secrets.SystemRandom().getrandbits(128))
     jwt = JWTManager(app)
 
     # @jwt.additional_claims_loader
@@ -97,13 +100,13 @@ def create_app(db_url=None):
 
     with app.app_context():
         import models  # noqa: F401
-
         db.create_all()
 
     # @app.before_first_request
     # def create_table():
     #     db.create_all()
 
+    api.register_blueprint(PessoaBlueprint)
     api.register_blueprint(LoginBlueprint)
     api.register_blueprint(ContaBlueprint)
 
