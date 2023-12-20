@@ -150,9 +150,11 @@ json {
 - **Método:** `POST`
 - **Descrição:** Encerra a sessão de usuário bloqueando o token de acesso do mesmo.
 - **Saída (200):** 
+```
 json {
   "mensagem": "Sessão encerrada com sucesso."
 }
+```
 
 <br>
 
