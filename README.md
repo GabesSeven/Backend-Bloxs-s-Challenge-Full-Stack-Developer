@@ -19,8 +19,8 @@
 
 <p>No <strong>Terminal</strong> <em>/ <strong>Console</em></strong>:</p>
 <ol>
-	<li>Faça um clone do projeto na sua máquina:<br><code>git clone git@github.com:GabesSeven/credit-application-system.git</code></li><br>
-	<li>Entre na pasta raiz do projeto:<br><code>cd credit-application-system/</code></li><br>
+	<li>Faça um clone do projeto na sua máquina:<br><code>git clone git@github.com:GabesSeven/Backend-Bloxs-s-Challenge-Full-Stack-Developer.git</code></li><br>
+	<li>Entre na pasta raiz do projeto:<br><code>cd Backend-Bloxs-s-Challenge-Full-Stack-Developer/</code></li><br>
 	<!-- <li>Em um terminal, crie um ambiente virtual:<br> <code>python3.11 -v .venv</code></li><br> -->
 	<li>Em um terminal, inicie o ambiente virtual:<br> <code>source .venv/bin/activate</code></li><br>
 	<!-- <li>Em um terminal, instale as bibliotecas:<br> <code>pip3 install -r requirements.txt</code></li><br> -->
