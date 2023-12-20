@@ -23,6 +23,7 @@
 	<li>Entre na pasta raiz do projeto:<br><code>cd Backend-Bloxs-s-Challenge-Full-Stack-Developer/</code></li><br>
 	<!-- <li>Em um terminal, crie um ambiente virtual:<br> <code>python3.11 -v .venv</code></li><br> -->
 	<li>Em um terminal, inicie o ambiente virtual:<br> <code>source .venv/bin/activate</code></li><br>
+	<li>Em um terminal, inicie a aplicação:<br> <code>flask run</code></li><br>
 	<!-- <li>Em um terminal, instale as bibliotecas:<br> <code>pip3 install -r requirements.txt</code></li><br> -->
   <li>Acessoa ao Swagger. Em um navegador:<br><a href='http://127.0.0.1:5000/swagger-ui'>http://127.0.0.1:5000/swagger-ui</a></li><br>
 </ol>
