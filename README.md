@@ -14,6 +14,23 @@
 <hr>
 <br>
 
+## Execução Local 🏃‍♀️
+<br><br>
+
+<p>No <strong>Terminal</strong> <em>/ <strong>Console</em></strong>:</p>
+<ol>
+	<li>Faça um clone do projeto na sua máquina:<br><code>git clone git@github.com:GabesSeven/credit-application-system.git</code></li><br>
+	<li>Entre na pasta raiz do projeto:<br><code>cd credit-application-system/</code></li><br>
+	<!-- <li>Em um terminal, crie um ambiente virtual:<br> <code>python3.11 -v .venv</code></li><br> -->
+	<li>Em um terminal, inicie o ambiente virtual:<br> <code>source .venv/bin/activate</code></li><br>
+	<!-- <li>Em um terminal, instale as bibliotecas:<br> <code>pip3 install -r requirements.txt</code></li><br> -->
+  <li>Acessoa ao Swagger. Em um navegador:<br><a href='http://127.0.0.1:5000/swagger-ui'>http://127.0.0.1:5000/swagger-ui</a></li><br>
+</ol>
+
+<br>
+<hr>
+<br>
+
 ## ⚠️⚠️⚠️ Observações - O que faltou? ⚠️⚠️⚠️
 <br><br>
 
@@ -67,23 +84,6 @@
 <ol>
   <li>Extrato</li>
   <li>Saque - ocorre verificação de limite por valores de transações diárias</li>
-</ol>
-
-<br>
-<hr>
-<br>
-
-## Execução Local 🏃‍♀️
-<br><br>
-
-<p>No <strong>Terminal</strong> <em>/ <strong>Console</em></strong>:</p>
-<ol>
-	<li>Faça um clone do projeto na sua máquina:<br><code>git clone git@github.com:GabesSeven/credit-application-system.git</code></li><br>
-	<li>Entre na pasta raiz do projeto:<br><code>cd credit-application-system/</code></li><br>
-	<!-- <li>Em um terminal, crie um ambiente virtual:<br> <code>python3.11 -v .venv</code></li><br> -->
-	<li>Em um terminal, inicie o ambiente virtual:<br> <code>source .venv/bin/activate</code></li><br>
-	<!-- <li>Em um terminal, instale as bibliotecas:<br> <code>pip3 install -r requirements.txt</code></li><br> -->
-  <li>Acessoa ao Swagger. Em um navegador:<br><a href='http://127.0.0.1:5000/swagger-ui'>http://127.0.0.1:5000/swagger-ui</a></li><br>
 </ol>
 
 <br>
@@ -145,7 +145,7 @@ json {
 
 <br>
 
-### Autenticação: Logout
+#### Autenticação: Logout
 - **URL:** `/logout`
 - **Método:** `POST`
 - **Descrição:** Encerra a sessão de usuário bloqueando o token de acesso do mesmo.
@@ -156,7 +156,7 @@ json {
 
 <br>
 
-### Autenticação: Atualização de Token
+#### Autenticação: Atualização de Token
 - **URL:** `/refresh`
 - **Método:** `POST`
 - **Descrição:** Atualiza o token de acesso.
@@ -209,7 +209,7 @@ json {
 
 <br>
 
-### Operação em Conta: Depósito em Conta
+#### Operação em Conta: Depósito em Conta
 - **URL:** `/operacao`
 - **Método:** `PUT`
 - **Descrição:** Realiza um depósito em uma conta.
@@ -230,7 +230,7 @@ json {
 
 <br>
 
-### ⚠️NÃO FINALIZADO: Operação em Conta: Saque em Conta ⚠️ 
+#### ⚠️NÃO FINALIZADO: Operação em Conta: Saque em Conta ⚠️ 
 
 - **URL:** `/operacao/`
 - **Método:** `POST`
@@ -238,7 +238,7 @@ json {
 
 <br>
 
-### ⚠️NÃO FINALIZADO: Operação em Conta: Extrato em Conta ⚠️ 
+#### ⚠️NÃO FINALIZADO: Operação em Conta: Extrato em Conta ⚠️ 
 
 - **URL:** `/operacao/<id_conta>`
 - **Método:** `GET` (para extrato)
