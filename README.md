@@ -12,6 +12,11 @@
 
 ## ⚠️⚠️⚠️ Observações - O que faltou? ⚠️⚠️⚠️
 
+### Segurança
+<ol>
+ <li>Para facilitar a exeução estou subindo os arquivos das variáveis de ambiente (ISSO É ERRADÍSSIMO) e as bibliotecas;</li>
+</ol>
+
 ### Acesso Remoto
 <ol>
  <li>Subir a aplicação em ambiente cloud, atualmente trabalho com Render para sublir as plataformas (frontend, backend e banco de dados);</li>
@@ -52,9 +57,9 @@
 <ol>
 	<li>Faça um clone do projeto na sua máquina:<br><code>git clone git@github.com:GabesSeven/credit-application-system.git</code></li><br>
 	<li>Entre na pasta raiz do projeto:<br><code>cd credit-application-system/</code></li><br>
-	<li>Em um terminal, crie um ambiente virtual:<br> <code>python3.11 -v .venv</code></li><br>
+	<!-- <li>Em um terminal, crie um ambiente virtual:<br> <code>python3.11 -v .venv</code></li><br> -->
 	<li>Em um terminal, inicie o ambiente virtual:<br> <code>source .venv/bin/activate</code></li><br>
-	<li>Em um terminal, instale as bibliotecas:<br> <code>pip3 install -r requirements.txt</code></li><br>
+	<!-- <li>Em um terminal, instale as bibliotecas:<br> <code>pip3 install -r requirements.txt</code></li><br> -->
   <li>Acessoa ao Swagger. Em um navegador:<br><a href='http://127.0.0.1:5000/swagger-ui'>http://127.0.0.1:5000/swagger-ui</a></li><br>
 </ol>
 

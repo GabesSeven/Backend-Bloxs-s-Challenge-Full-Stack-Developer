@@ -3,11 +3,11 @@
 __pycache__/
 
 # Arquivos de ambiente ou configuração local
-.env
+# .env
 
 # Diretório de instalação de dependências
-/venv/
-/.venv/
+# /venv/
+# /.venv/
 
 # Arquivos de log
 *.log
@@ -20,9 +20,9 @@ __pycache__/
 Thumbs.db
 
 # Cache de bytecodes Python
-*.pyc
-*.pyo
-__pycache__/
+# *.pyc
+# *.pyo
+# __pycache__/
 
 # Diretório de uploads
 uploads/
@@ -38,12 +38,12 @@ instance/
 .idea/
 
 # Arquivos de banco de dados locais
-*.sqlite
-*.db
+# *.sqlite
+# *.db
 
 # Arquivos de saída de testes e cobertura
-.coverage
-htmlcov/
+# .coverage
+# htmlcov/
 
 # Arquivos de migração de banco de dados
-migrations/
+# migrations/
